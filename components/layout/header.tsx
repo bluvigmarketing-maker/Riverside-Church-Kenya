@@ -30,9 +30,9 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="River Church Eldoret"
-            width={160}
-            height={40}
-            className="h-9 w-auto"
+            width={977}
+            height={271}
+            className="h-12 w-auto sm:h-14"
             priority
           />
         </Link>

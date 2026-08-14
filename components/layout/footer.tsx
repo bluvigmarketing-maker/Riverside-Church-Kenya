@@ -10,13 +10,15 @@ export async function Footer() {
     <footer className="bg-navy-950 text-navy-100">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div className="flex flex-col gap-4">
-          <Image
-            src="/logo.png"
-            alt="River Church Eldoret"
-            width={160}
-            height={40}
-            className="h-9 w-auto brightness-0 invert"
-          />
+          <div className="w-fit rounded-xl bg-white px-4 py-2.5">
+            <Image
+              src="/logo.png"
+              alt="River Church Eldoret"
+              width={977}
+              height={271}
+              className="h-10 w-auto sm:h-12"
+            />
+          </div>
           <p className="text-sm text-navy-300">
             {settings?.motto ?? "Where God's River Never Runs Dry, it just flows"}
           </p>
