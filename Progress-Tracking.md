@@ -2,7 +2,7 @@
 
 Status key: ⬜ Not started · 🟨 In progress · ✅ Done · ⛔ Blocked (needs client action)
 
-Last updated: 2026-08-14
+Last updated: 2026-08-15
 
 **Scope note:** this build is phased — see `Client-Requests.md` for the full ask.
 **Phase 1 (this tracker's main focus)** is the complete public site, content-driven
@@ -27,8 +27,8 @@ with role-based permissions, in-browser image upload, and Paystack donations.
 |---|---|---|
 | Tech stack confirmed | ✅ | Next.js (App Router) + TypeScript + Tailwind + shadcn/ui + Framer Motion + Supabase + Vercel |
 | Phasing agreed with client | ✅ | Public site first (this build); admin dashboard + Paystack as Phase 2 |
-| Supabase project created | ⛔ | **Client action** — see `SETUP.md` step 1 |
-| Vercel project created & linked | ⛔ | **Client action** — see `SETUP.md` step 6 |
+| Supabase project created | ✅ | Live project connected; migration + seed run successfully, verified via REST query |
+| Vercel project created & linked | ✅ | Deployed and reachable on the auto-generated Vercel URL (Framework Preset was set to "Other" — fixed to "Next.js") |
 | Domain/DNS plan confirmed | 🟨 | Domain `riverchurchke.org` already owned; DNS cutover happens at launch |
 
 ## Phase 2 — Design
@@ -46,7 +46,7 @@ with role-based permissions, in-browser image upload, and Paystack donations.
 | Task | Status | Notes |
 |---|---|---|
 | Project scaffolded | ✅ | Next.js + Tailwind + shadcn/ui + Framer Motion + Supabase client helpers |
-| Supabase schema & seed written | ✅ | `supabase/migrations/0001_init.sql`, `supabase/seed.sql` — ready to run once the project exists (see `SETUP.md`) |
+| Supabase schema & seed run | ✅ | `supabase/migrations/0001_init.sql` and `supabase/seed.sql` executed against the live project; `site_settings` verified populated via REST query |
 | Homepage built | ✅ | Hero, key scripture block, pastors' welcome message, vision/mission/pillars, upcoming-event countdown banner, about snippet, find-us map |
 | About Us overview page built | ✅ | |
 | History page built | ✅ | Timeline sourced from the client's full history narrative |
@@ -66,7 +66,7 @@ with role-based permissions, in-browser image upload, and Paystack donations.
 |---|---|---|
 | Logo in place | ✅ | `public/logo.png` |
 | Hero images in place | ✅ | Desktop + mobile variants, `public/images/` |
-| Leadership photos in place | ✅ | Seeded as fallback content now; `scripts/upload-media.ts` pushes them to Supabase Storage once the project exists |
+| Leadership photos in place | ✅ | `media` Storage bucket created (public) and `npm run upload-media` run — both pastor photos + 2 extra gallery shots live and verified resolving |
 | History section images | ⬜ | None supplied yet — sections render with a styled placeholder until photos are added |
 | Programs/Events images | ⬜ | None supplied yet — sample event and program cards use icon-only styling until photos are added |
 | Favicon updated from brand mark | ⬜ | Currently the default Next.js favicon — needs a square icon-only version of the logo |
