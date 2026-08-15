@@ -26,3 +26,5 @@ const ICONS: Record<string, LucideIcon> = {
 export function getIcon(name: string | null | undefined): LucideIcon {
   return (name && ICONS[name]) || Sparkles;
 }
+
+export const ICON_KEYS = Object.keys(ICONS);

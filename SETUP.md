@@ -71,9 +71,34 @@ Supabase is connected, real data takes over automatically.
 5. Once ready to go live, point the `riverchurchke.org` domain at the Vercel
    project (Vercel → Settings → Domains).
 
-## Editing content day-to-day (until the Phase 2 admin dashboard ships)
+## 7. Set up the admin dashboard (Phase 2)
 
-Everything below is edited directly in Supabase's **Table Editor**:
+The custom `/admin` dashboard is now built. To activate it:
+
+1. In the Supabase SQL Editor, open `supabase/migrations/0002_admin_dashboard.sql`,
+   paste its contents, and run it. This adds the permissions model on top of
+   `0001` — safe to run any time after `0001`.
+2. Create the first **Super Admin** account (every account after this one is
+   created from inside the dashboard's Staff page instead):
+   ```
+   npm run create-super-admin -- pastor@example.com "a-strong-password"
+   ```
+   This uses `SUPABASE_SERVICE_ROLE_KEY` from `.env.local`.
+3. Sign in at `/admin/login` with that email/password. From there, the super
+   admin can invite additional staff accounts (Staff page) and choose exactly
+   which sections each one can access.
+4. Traffic analytics live in Vercel itself — once deployed, open the project
+   on vercel.com and go to its **Analytics** tab (no extra setup needed,
+   `@vercel/analytics` is already wired in).
+
+## Editing content day-to-day
+
+With the dashboard live, day-to-day edits (site settings, leadership, history,
+programs, events, viewing contact messages, managing staff) all happen at
+`/admin` — no Supabase dashboard access needed for that.
+
+Supabase's own **Table Editor** is still there as a fallback / for anything
+not covered by the dashboard:
 
 | What to change | Table |
 |---|---|
@@ -82,7 +107,9 @@ Everything below is edited directly in Supabase's **Table Editor**:
 | History page timeline sections | `history_sections` |
 | Ministries / "Pillars of Our Faith" | `programs` |
 | Events (add/edit/remove, mark one as `is_featured` for the homepage countdown, toggle `donation_enabled`) | `events` |
-| Contact form submissions | `contact_messages` (read-only from the site; view replies here) |
+| Contact form submissions | `contact_messages` |
+| Admin accounts & permissions | `profiles` |
 
 Changes typically appear on the live site within 5 minutes (or immediately
-in local dev).
+in local dev), and admin dashboard edits also trigger an instant refresh of
+the relevant public page.

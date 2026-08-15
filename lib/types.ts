@@ -57,3 +57,11 @@ export type ChurchEvent = {
   donation_enabled: boolean;
   created_at: string;
 };
+
+export type ContactMessage = {
+  id: number;
+  name: string;
+  email: string;
+  message: string;
+  created_at: string;
+};
