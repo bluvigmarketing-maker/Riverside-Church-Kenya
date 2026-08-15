@@ -15,7 +15,13 @@ export function EventCard({ event, delay = 0 }: { event: ChurchEvent; delay?: nu
       <div className="gold-line group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
         <div className="relative aspect-[16/9] w-full bg-navy-950">
           {imageUrl ? (
-            <Image src={imageUrl} alt={event.title} fill className="object-cover" />
+            <Image
+              src={imageUrl}
+              alt={event.title}
+              fill
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
+              className="object-cover"
+            />
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-1 text-gold-300">
               <CalendarDays className="size-8" aria-hidden="true" />

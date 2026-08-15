@@ -61,7 +61,7 @@ export function ImageUploadField({
       <div className="flex items-center gap-4">
         <div className="relative flex size-20 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-navy-100">
           {previewUrl ? (
-            <Image src={previewUrl} alt="" fill className="object-cover" />
+            <Image src={previewUrl} alt="" fill sizes="80px" className="object-cover" />
           ) : (
             <ImageOff className="size-6 text-navy-400" aria-hidden="true" />
           )}

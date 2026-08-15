@@ -20,7 +20,13 @@ export function LeaderProfile({ leader }: { leader: Leader }) {
         <div className="flex flex-col items-center gap-4 text-center">
           <div className="relative aspect-[4/5] w-full max-w-64 overflow-hidden rounded-2xl bg-navy-100">
             {imageUrl ? (
-              <Image src={imageUrl} alt={leader.name} fill className="object-cover" />
+              <Image
+                src={imageUrl}
+                alt={leader.name}
+                fill
+                sizes="(min-width: 640px) 256px, 60vw"
+                className="object-cover"
+              />
             ) : (
               <div className="flex h-full items-center justify-center">
                 <Users className="size-10 text-navy-400" aria-hidden="true" />

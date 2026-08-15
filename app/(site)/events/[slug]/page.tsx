@@ -47,7 +47,13 @@ export default async function EventDetailPage({
       <AnimatedSection className="mt-6">
         <div className="relative aspect-[16/7] w-full overflow-hidden rounded-3xl bg-navy-950">
           {imageUrl ? (
-            <Image src={imageUrl} alt={event.title} fill className="object-cover" />
+            <Image
+              src={imageUrl}
+              alt={event.title}
+              fill
+              sizes="(min-width: 768px) 896px, 100vw"
+              className="object-cover"
+            />
           ) : (
             <div className="flex h-full items-center justify-center">
               <CalendarClock className="size-12 text-gold-300" aria-hidden="true" />

@@ -50,6 +50,7 @@ export function WelcomeMessage({ leaders }: { leaders: Leader[] }) {
                       src={getMediaUrl(leader.photo_url)!}
                       alt={leader.name}
                       fill
+                      sizes="(min-width: 768px) 260px, (min-width: 640px) 45vw, 90vw"
                       className="object-cover"
                     />
                   )}

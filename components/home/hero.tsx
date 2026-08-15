@@ -6,11 +6,14 @@ import type { SiteSettings } from "@/lib/types";
 export function Hero({ settings }: { settings: SiteSettings }) {
   return (
     <section className="relative flex min-h-[90vh] items-center overflow-hidden">
+      {/* sizes carries a 0px hint for the breakpoint each image is CSS-hidden at,
+          so the browser doesn't fetch both full-size images on every device. */}
       <Image
         src="/images/hero-desktop.jpg"
         alt="River flowing through a forest, symbolizing the river of life"
         fill
         priority
+        sizes="(min-width: 768px) 100vw, 0px"
         className="hidden object-cover object-center md:block"
       />
       <Image
@@ -18,6 +21,7 @@ export function Hero({ settings }: { settings: SiteSettings }) {
         alt="River flowing through a forest, symbolizing the river of life"
         fill
         priority
+        sizes="(max-width: 767px) 100vw, 0px"
         className="object-cover object-center md:hidden"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />

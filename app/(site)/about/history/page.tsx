@@ -34,7 +34,13 @@ export default async function HistoryPage() {
               <AnimatedSection className={imageFirst ? "md:order-1" : "md:order-2"}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-navy-950">
                   {imageUrl ? (
-                    <Image src={imageUrl} alt={section.heading} fill className="object-cover" />
+                    <Image
+                      src={imageUrl}
+                      alt={section.heading}
+                      fill
+                      sizes="(min-width: 768px) 540px, 100vw"
+                      className="object-cover"
+                    />
                   ) : (
                     <div className="flex h-full items-center justify-center px-6 text-center font-heading text-2xl font-semibold text-gold-300">
                       {section.heading}
