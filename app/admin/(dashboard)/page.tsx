@@ -45,16 +45,20 @@ export default async function AdminHomePage() {
         })}
       </div>
 
-      <div className="gold-line flex items-start gap-3 rounded-xl border bg-white p-5">
-        <BarChart3 className="mt-0.5 size-5 shrink-0 text-gold-600" aria-hidden="true" />
-        <div>
-          <p className="font-heading font-semibold text-navy-950">Site visit analytics</p>
-          <p className="mt-1 text-sm text-navy-600">
-            Traffic stats live in your Vercel dashboard — open the project on vercel.com and go to
-            its <strong>Analytics</strong> tab.
-          </p>
-        </div>
-      </div>
+      {profile.role === "super_admin" && (
+        <Link
+          href="/admin/analytics"
+          className="gold-line flex items-start gap-3 rounded-xl border bg-white p-5 transition-transform hover:-translate-y-0.5 hover:shadow-md"
+        >
+          <BarChart3 className="mt-0.5 size-5 shrink-0 text-gold-600" aria-hidden="true" />
+          <div>
+            <p className="font-heading font-semibold text-navy-950">Site visit analytics</p>
+            <p className="mt-1 text-sm text-navy-600">
+              See page views and top pages for the public site.
+            </p>
+          </div>
+        </Link>
+      )}
     </div>
   );
 }

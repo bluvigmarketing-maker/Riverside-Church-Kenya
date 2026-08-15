@@ -11,6 +11,7 @@ import {
   CalendarDays,
   Mail,
   ShieldCheck,
+  BarChart3,
   LogOut,
 } from "lucide-react";
 import { hasPermission, type AdminProfile } from "@/lib/permissions";
@@ -24,6 +25,11 @@ const NAV = [
   { href: "/admin/programs", label: "Programs", icon: Sparkles, perm: "programs" },
   { href: "/admin/events", label: "Events", icon: CalendarDays, perm: "events" },
   { href: "/admin/messages", label: "Messages", icon: Mail, perm: "messages" },
+] as const;
+
+const SUPER_ADMIN_NAV = [
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
+  { href: "/admin/staff", label: "Staff Accounts", icon: ShieldCheck },
 ] as const;
 
 export function Sidebar({ profile }: { profile: AdminProfile }) {
@@ -59,19 +65,24 @@ export function Sidebar({ profile }: { profile: AdminProfile }) {
           }
         )}
 
-        {profile.role === "super_admin" && (
-          <Link
-            href="/admin/staff"
-            className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              pathname === "/admin/staff"
-                ? "bg-navy-950 text-white"
-                : "text-navy-700 hover:bg-navy-50 hover:text-navy-950"
-            }`}
-          >
-            <ShieldCheck className="size-4" aria-hidden="true" />
-            Staff Accounts
-          </Link>
-        )}
+        {profile.role === "super_admin" &&
+          SUPER_ADMIN_NAV.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-navy-950 text-white"
+                    : "text-navy-700 hover:bg-navy-50 hover:text-navy-950"
+                }`}
+              >
+                <item.icon className="size-4" aria-hidden="true" />
+                {item.label}
+              </Link>
+            );
+          })}
       </nav>
 
       <div className="border-t border-navy-100 p-3">
