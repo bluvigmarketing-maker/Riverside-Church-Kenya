@@ -8,6 +8,7 @@ const PUBLIC_ROUTES = [
   "/programs",
   "/events",
   "/contact",
+  "/organizations/women-of-the-living-waters",
 ];
 
 /** Called after any admin content mutation so edits show up immediately instead of waiting for ISR. */

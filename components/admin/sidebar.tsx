@@ -8,6 +8,7 @@ import {
   Users,
   History as HistoryIcon,
   Sparkles,
+  HeartHandshake,
   CalendarDays,
   Mail,
   ShieldCheck,
@@ -23,6 +24,12 @@ const NAV = [
   { href: "/admin/leaders", label: "Leadership", icon: Users, perm: "leaders" },
   { href: "/admin/history", label: "History", icon: HistoryIcon, perm: "history" },
   { href: "/admin/programs", label: "Programs", icon: Sparkles, perm: "programs" },
+  {
+    href: "/admin/organizations",
+    label: "Organizations",
+    icon: HeartHandshake,
+    perm: "organizations",
+  },
   { href: "/admin/events", label: "Events", icon: CalendarDays, perm: "events" },
   { href: "/admin/messages", label: "Messages", icon: Mail, perm: "messages" },
 ] as const;
@@ -47,7 +54,9 @@ export function Sidebar({ profile }: { profile: AdminProfile }) {
       <nav className="flex flex-1 flex-col gap-1 p-3">
         {NAV.filter((item) => item.perm === null || hasPermission(profile, item.perm)).map(
           (item) => {
-            const active = pathname === item.href;
+            const active =
+              pathname === item.href ||
+              (item.href !== "/admin" && pathname.startsWith(`${item.href}/`));
             return (
               <Link
                 key={item.href}

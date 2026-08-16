@@ -5,6 +5,8 @@ import {
   FALLBACK_HISTORY_SECTIONS,
   FALLBACK_PROGRAMS,
   FALLBACK_EVENTS,
+  FALLBACK_ORGANIZATIONS,
+  FALLBACK_ORGANIZATION_SECTIONS,
 } from "./content-fallback";
 import type {
   SiteSettings,
@@ -12,6 +14,8 @@ import type {
   HistorySection,
   Program,
   ChurchEvent,
+  Organization,
+  OrganizationSection,
 } from "./types";
 
 /**
@@ -88,4 +92,52 @@ export async function getEventBySlug(slug: string): Promise<ChurchEvent | null> 
     if (!error && data) return data;
   }
   return FALLBACK_EVENTS.find((event) => event.slug === slug) ?? null;
+}
+
+export async function getOrganizations(): Promise<Organization[]> {
+  const supabase = createClient();
+  if (!supabase) return FALLBACK_ORGANIZATIONS;
+
+  const { data, error } = await supabase.from("organizations").select("*").order("sort_order");
+  if (error || !data || data.length === 0) return FALLBACK_ORGANIZATIONS;
+  return data;
+}
+
+export async function getOrganizationById(id: number): Promise<Organization | null> {
+  const supabase = createClient();
+  if (supabase) {
+    const { data, error } = await supabase.from("organizations").select("*").eq("id", id).single();
+    if (!error && data) return data;
+  }
+  return FALLBACK_ORGANIZATIONS.find((org) => org.id === id) ?? null;
+}
+
+export async function getOrganizationBySlug(slug: string): Promise<Organization | null> {
+  const supabase = createClient();
+  if (supabase) {
+    const { data, error } = await supabase
+      .from("organizations")
+      .select("*")
+      .eq("slug", slug)
+      .single();
+    if (!error && data) return data;
+  }
+  return FALLBACK_ORGANIZATIONS.find((org) => org.slug === slug) ?? null;
+}
+
+export async function getOrganizationSections(organizationId: number): Promise<OrganizationSection[]> {
+  const supabase = createClient();
+  if (!supabase) {
+    return FALLBACK_ORGANIZATION_SECTIONS.filter((s) => s.organization_id === organizationId);
+  }
+
+  const { data, error } = await supabase
+    .from("organization_sections")
+    .select("*")
+    .eq("organization_id", organizationId)
+    .order("sort_order");
+  if (error || !data || data.length === 0) {
+    return FALLBACK_ORGANIZATION_SECTIONS.filter((s) => s.organization_id === organizationId);
+  }
+  return data;
 }

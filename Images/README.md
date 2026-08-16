@@ -10,6 +10,7 @@ Drop your images into the matching subfolder below. Use clear file names (e.g. `
 | `History/` | Photos illustrating the church's story (old photos, land, tents, construction progress, etc.) |
 | `Leadership/` | Headshots/photos of Pastor Borness, Pastor Ezra, and any other leaders or ministry heads |
 | `Programs/` | Photos for ministries/programs (Sunday school, youth, worship team, outreach, etc.) |
+| `Logo/` (org-specific files, e.g. `women-of-the-living-waters-logo.jpeg`) | Logos for affiliated organizations under the church (each gets its own dedicated page) |
 | `Events/` | Photos/flyers for upcoming or past events |
 | `Gallery/` | General congregation/worship/community photos for a photo gallery |
 | `Contact/` | Map screenshot, building photo, or anything for the contact page |

@@ -91,6 +91,26 @@ The custom `/admin` dashboard is now built. To activate it:
    on vercel.com and go to its **Analytics** tab (no extra setup needed,
    `@vercel/analytics` is already wired in).
 
+## 8. Add an affiliated organization (e.g. Women of the Living Waters)
+
+Organizations/CBOs that sit under the church (each with their own dedicated
+page at `/organizations/[slug]`) are a separate content type from the rest of
+the site:
+
+1. In the Supabase SQL Editor, run `supabase/migrations/0004_organizations.sql`
+   (safe to run any time after `0001`/`0002`). This adds the `organizations`
+   and `organization_sections` tables.
+2. Re-run (or run for the first time) `supabase/seed.sql` — it now also
+   includes the full "Women of the Living Waters" content. If you already ran
+   `seed.sql` before this migration existed, just copy the new `organizations`
+   / `organization_sections` insert statements from the bottom of the file
+   into the SQL Editor instead of the whole file.
+3. Grant the `organizations` permission to whichever staff account should
+   manage it (Staff page, or automatic for the super admin).
+4. Manage it day-to-day at `/admin/organizations` — edit the organization's
+   identity (name, logo, motto, vision/mission) there, and use "Manage
+   Sections" on its row to edit the page's content blocks and upload photos.
+
 ## Editing content day-to-day
 
 With the dashboard live, day-to-day edits (site settings, leadership, history,
@@ -107,6 +127,8 @@ not covered by the dashboard:
 | History page timeline sections | `history_sections` |
 | Ministries / "Pillars of Our Faith" | `programs` |
 | Events (add/edit/remove, mark one as `is_featured` for the homepage countdown, toggle `donation_enabled`) | `events` |
+| Affiliated organizations (e.g. Women of the Living Waters) — identity, logo, vision/mission | `organizations` |
+| An organization's page content (objectives, outreach, photos) | `organization_sections` |
 | Contact form submissions | `contact_messages` |
 | Admin accounts & permissions | `profiles` |
 

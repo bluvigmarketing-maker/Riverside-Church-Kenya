@@ -3,6 +3,7 @@ export const PERMISSIONS = [
   { key: "leaders", label: "Leadership" },
   { key: "history", label: "History" },
   { key: "programs", label: "Programs" },
+  { key: "organizations", label: "Organizations" },
   { key: "events", label: "Events" },
   { key: "messages", label: "Contact Messages" },
 ] as const;

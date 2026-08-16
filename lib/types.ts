@@ -58,6 +58,33 @@ export type ChurchEvent = {
   created_at: string;
 };
 
+export type Organization = {
+  id: number;
+  slug: string;
+  name: string;
+  short_description: string;
+  motto: string | null;
+  theme_scripture_text: string | null;
+  theme_scripture_ref: string | null;
+  vision: string;
+  mission: string;
+  logo_url: string | null;
+  hero_image_url: string | null;
+  sort_order: number;
+};
+
+export type OrganizationSection = {
+  id: number;
+  organization_id: number;
+  part: string;
+  heading: string;
+  scripture_text: string | null;
+  scripture_ref: string | null;
+  body: string;
+  image_url: string | null;
+  sort_order: number;
+};
+
 export type ContactMessage = {
   id: number;
   name: string;

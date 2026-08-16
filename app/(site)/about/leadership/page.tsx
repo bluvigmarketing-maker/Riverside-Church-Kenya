@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/shared/page-hero";
 import { Container } from "@/components/shared/container";
 import { LeaderProfile } from "@/components/leadership/leader-profile";
-import { getLeaders } from "@/lib/content";
+import { OrganizationLink } from "@/components/leadership/organization-link";
+import { getLeaders, getOrganizationBySlug } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Our Leadership",
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 };
 
 export default async function LeadershipPage() {
-  const leaders = await getLeaders();
+  const [leaders, womenOfLivingWaters] = await Promise.all([
+    getLeaders(),
+    getOrganizationBySlug("women-of-the-living-waters"),
+  ]);
 
   return (
     <>
@@ -22,9 +26,17 @@ export default async function LeadershipPage() {
       />
 
       <Container className="flex flex-col gap-10 py-16">
-        {leaders.map((leader) => (
-          <LeaderProfile key={leader.id} leader={leader} />
-        ))}
+        {leaders.map((leader) => {
+          const isSeniorPastor = leader.name.toLowerCase().includes("borness");
+          return (
+            <div key={leader.id} className="flex flex-col gap-6">
+              <LeaderProfile leader={leader} />
+              {isSeniorPastor && womenOfLivingWaters && (
+                <OrganizationLink organization={womenOfLivingWaters} />
+              )}
+            </div>
+          );
+        })}
       </Container>
     </>
   );

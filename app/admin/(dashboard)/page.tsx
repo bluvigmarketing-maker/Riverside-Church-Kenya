@@ -8,6 +8,10 @@ const SECTION_LINKS: Record<string, { href: string; description: string }> = {
   leaders: { href: "/admin/leaders", description: "Pastor bios, photos, and quotes" },
   history: { href: "/admin/history", description: "The church history timeline" },
   programs: { href: "/admin/programs", description: "Ministries / pillars of faith" },
+  organizations: {
+    href: "/admin/organizations",
+    description: "Affiliated ministries/CBOs under the church, each with their own page",
+  },
   events: { href: "/admin/events", description: "Events, the homepage countdown, and donations" },
   messages: { href: "/admin/messages", description: "Contact form submissions" },
 };
