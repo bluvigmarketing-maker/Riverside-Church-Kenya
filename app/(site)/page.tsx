@@ -5,14 +5,21 @@ import { WelcomeMessage } from "@/components/home/welcome-message";
 import { VisionMissionPillars } from "@/components/home/vision-mission-pillars";
 import { AboutSnippet } from "@/components/home/about-snippet";
 import { FindUs } from "@/components/home/find-us";
-import { getSiteSettings, getLeaders, getPrograms, getFeaturedEvent } from "@/lib/content";
+import {
+  getSiteSettings,
+  getLeaders,
+  getPrograms,
+  getFeaturedEvent,
+  getOrganizationBySlug,
+} from "@/lib/content";
 
 export default async function Home() {
-  const [settings, leaders, programs, featuredEvent] = await Promise.all([
+  const [settings, leaders, programs, featuredEvent, womenOfLivingWaters] = await Promise.all([
     getSiteSettings(),
     getLeaders(),
     getPrograms(),
     getFeaturedEvent(),
+    getOrganizationBySlug("women-of-the-living-waters"),
   ]);
 
   return (
@@ -20,7 +27,7 @@ export default async function Home() {
       <Hero settings={settings} />
       <FeaturedEventBanner event={featuredEvent} />
       <ScriptureBlock settings={settings} />
-      <WelcomeMessage leaders={leaders} />
+      <WelcomeMessage leaders={leaders} organization={womenOfLivingWaters} />
       <VisionMissionPillars settings={settings} programs={programs} />
       <AboutSnippet settings={settings} />
       <FindUs settings={settings} />

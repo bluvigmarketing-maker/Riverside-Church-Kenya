@@ -11,6 +11,7 @@ export const NAV_LINKS: { label: string; href?: string; children?: NavLink[] }[]
     ],
   },
   { label: "Programs", href: "/programs" },
+  { label: "Organizations", href: "/organizations/women-of-the-living-waters" },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
 ];

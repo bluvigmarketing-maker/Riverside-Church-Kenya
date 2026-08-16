@@ -3,11 +3,19 @@ import { Quote } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { Container } from "@/components/shared/container";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { OrganizationLink } from "@/components/leadership/organization-link";
 import { getMediaUrl } from "@/lib/supabase/media";
-import type { Leader } from "@/lib/types";
+import type { Leader, Organization } from "@/lib/types";
 
-export function WelcomeMessage({ leaders }: { leaders: Leader[] }) {
+export function WelcomeMessage({
+  leaders,
+  organization,
+}: {
+  leaders: Leader[];
+  organization?: Organization | null;
+}) {
   const senior = leaders[0];
+  const seniorLeadsOrganization = senior?.name.toLowerCase().includes("borness");
 
   return (
     <Container className="py-16">
@@ -34,6 +42,10 @@ export function WelcomeMessage({ leaders }: { leaders: Leader[] }) {
               Whether you are seeking spiritual renewal, looking for a church family, or hoping
               for hope, there is a place for you here.
             </p>
+
+            {seniorLeadsOrganization && organization && (
+              <OrganizationLink organization={organization} />
+            )}
           </div>
         </AnimatedSection>
 
