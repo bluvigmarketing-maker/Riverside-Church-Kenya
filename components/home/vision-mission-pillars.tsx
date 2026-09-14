@@ -68,7 +68,7 @@ export function VisionMissionPillars({
                     </h4>
                     <p className="mt-2 text-sm text-navy-700">{program.description}</p>
                     {program.tag_label && (
-                      <span className="mt-4 inline-flex items-center rounded-full border border-gold-400/50 px-2.5 py-1 text-xs font-medium text-gold-700">
+                      <span className="mt-4 inline-flex items-center text-xs font-medium text-gold-700">
                         {program.tag_label}
                       </span>
                     )}

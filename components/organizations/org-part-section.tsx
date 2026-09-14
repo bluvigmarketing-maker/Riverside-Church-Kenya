@@ -33,7 +33,7 @@ export function OrgPartSection({
         <div className="grid items-start gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-10">
           <AnimatedSection>
             <div className="flex flex-col gap-3">
-              <span className="inline-flex w-fit items-center rounded-full border border-gold-400/60 px-3 py-1 text-xs font-semibold tracking-wide text-purple-700 uppercase">
+              <span className="w-fit text-xs font-semibold tracking-wide text-purple-700 uppercase">
                 {part}
               </span>
               <h2 className="font-heading text-3xl font-semibold text-purple-950 sm:text-4xl">

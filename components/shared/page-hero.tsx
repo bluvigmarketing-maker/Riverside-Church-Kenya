@@ -14,7 +14,7 @@ export function PageHero({
       <Container>
         <div className="flex flex-col items-center gap-3">
           {eyebrow && (
-            <span className="inline-flex items-center rounded-full border border-gold-400/60 px-3 py-1 text-xs font-semibold tracking-wide text-gold-300 uppercase">
+            <span className="text-xs font-semibold tracking-wide text-gold-300 uppercase">
               {eyebrow}
             </span>
           )}

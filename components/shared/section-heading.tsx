@@ -26,10 +26,8 @@ export function SectionHeading({
       {eyebrow && (
         <span
           className={cn(
-            "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold tracking-wide uppercase",
-            light
-              ? "border-gold-400/40 text-gold-300"
-              : "border-gold-400/60 text-gold-700"
+            "text-xs font-semibold tracking-wide uppercase",
+            light ? "text-gold-300" : "text-gold-700"
           )}
         >
           {eyebrow}

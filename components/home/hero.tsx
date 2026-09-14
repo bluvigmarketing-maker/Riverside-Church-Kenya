@@ -27,7 +27,7 @@ export function Hero({ settings }: { settings: SiteSettings }) {
       <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 py-24 text-center sm:px-6">
-        <span className="inline-flex items-center rounded-full border border-gold-400/60 px-3 py-1 text-xs font-semibold tracking-wide text-gold-300 uppercase">
+        <span className="text-xs font-semibold tracking-wide text-gold-300 uppercase">
           River Church Eldoret
         </span>
         <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl md:text-6xl">
